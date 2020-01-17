@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>cutting.d3m</file>
+    </qresource>
+</RCC>
