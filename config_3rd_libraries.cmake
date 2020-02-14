@@ -39,7 +39,7 @@ add_definitions(-DBOOST_ALL_DYN_LINK)
 # that will avoid undefined references in linking
 #add_definitions(-DBOOST_LOG_DYN_LINK)
 
-set(BOOST_ROOT "C:/local/boost_1_68_0")
+set(BOOST_ROOT "D:/lib/Boost")
 
 set(Boost_USE_DEBUG_LIBS ON)
 set(Boost_USE_RELEASE_LIBS OFF)
@@ -71,7 +71,7 @@ list(APPEND EC_extra_libs ${Boost_LIBRARIES})
 #  find Eigen3
 ####################################
 if(WIN32)
-    set(Eigen3_DIR "D:/lib/Eigen3/include/eigen3")
+    set(Eigen3_DIR "D:/lib/eigen3")
     message(STATUS  "eigen3 cmake module path : " ${CMAKE_MODULE_PATH})
 endif(WIN32)
 
@@ -83,7 +83,6 @@ include_directories(
   ${EIGEN3_INCLUDE_DIR}
   ${EIGEN3_LIBRARIES}
 )
-list(APPEND EC_extra_libs ${EIGEN3_LIBRARIES})
 
 ####################################
 #  find Qt5
@@ -93,7 +92,7 @@ cmake_policy(SET CMP0071 NEW)
 
 if(WIN32)
     set(CMAKE_PREFIX_PATH
-        "C:/Qt/5.12.0/msvc2017_64"
+        "C:/Qt/Qt5.10.0/5.12.3/msvc2017_64"
         ${CMAKE_PREFIX_PATH}
         )
 # elseif(UNIX)
@@ -137,13 +136,13 @@ list(APPEND EC_extra_libs ${VTK_LIBRARIES})
 #####################################
 if(WIN32)
     # for windows find_package(GTest REQUIRED) DONOT work
-    set(GTEST_ROOT "C:/Program Files/googletest-distribution")
+    set(GTEST_ROOT "D:/lib/googletest/googletest-release-1.8.1-inst")
     set(GTEST_MSVC_SEARCH MT)
 else()
     set(GTEST_ROOT /usr/local)
     # find_package(GTest REQUIRED)
 endif()
-find_package(GTest REQUIRED)
+#find_package(GTest REQUIRED)
 include(GoogleTest)
 include_directories(${GTEST_ROOT}/include)
 link_directories(${GTEST_ROOT}/lib)

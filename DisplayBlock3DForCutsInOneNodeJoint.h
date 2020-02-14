@@ -50,8 +50,8 @@ class  DisplayBlock3DForCutsInOneNodeJoint
 //    EC_GET_PROPERTY_BY_PTR_HEADER(vtkFloatArray, VTKCellData)
 
 public:
-    virtual bool execute()override;
-
+    /*virtual*/ bool execute()override;
+    /*virtual*/ bool check()const override;
 protected:
 	void _buildScene();
 	void _updateScene();

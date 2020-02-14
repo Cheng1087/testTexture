@@ -1,13 +1,13 @@
 include(GenerateExportHeader)
 set(EC_extra_libs "")
 
-set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/inst")
+#set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/inst")
 
 ##################################
 # ECComponents
 ##################################
 if(WIN32)
-    set(ECComponents_ROOT D:/lib/ECBase/0.1.8 )
+    set(ECComponents_ROOT D:/lib/release/0.2.2 )
 endif()
 set(CMAKE_MODULE_PATH "${ECComponents_ROOT}/cmake" ${CMAKE_MODULE_PATH})
 
@@ -30,7 +30,7 @@ include_directories(${ECComponents_INCLUDE_DIRS})
 # ECCut
 ##################################
 if(WIN32)
-    set(ECCut_ROOT D:/lib/ECCut/0.2.2 )
+    set(ECCut_ROOT D:/lib/re/0.3.2 )
 endif()
 set(CMAKE_MODULE_PATH "${ECCut_ROOT}/cmake" ${CMAKE_MODULE_PATH})
 
@@ -52,7 +52,7 @@ link_directories(${ECCut_LIBRARIES})
 # ECVisualization
 ##################################
  if(WIN32)
-     set(ECVisualization_ROOT "D:/lib/ECV"  )
+     set(ECVisualization_ROOT "D:/lib/ECVTmp/ECInsts"  )
  endif()
  set(CMAKE_MODULE_PATH "${ECVisualization_ROOT}/cmake" ${CMAKE_MODULE_PATH})
 
@@ -73,7 +73,7 @@ link_directories(${ECVisualization_LIBRARIES})
  # ECIO
  ##################################
   if(WIN32)
-      set(ECIO_ROOT "D:/lib/ECIO"  )
+      set(ECIO_ROOT "D:/lib/ECIO/ECInsts"  )
   endif()
   set(CMAKE_MODULE_PATH "${ECIO_ROOT}/cmake" ${CMAKE_MODULE_PATH})
 
@@ -95,7 +95,7 @@ link_directories( ${ECIO_LIBRARIES}  )
 # ECCAD
 ##################################
  if(WIN32)
-     set(ECCAD_ROOT "D:/lib/ECCAD"  )
+     set(ECCAD_ROOT D:/lib/ECCADComponents/ECInsts  )
  endif()
  set(CMAKE_MODULE_PATH "${ECCAD_ROOT}/cmake" ${CMAKE_MODULE_PATH})
 

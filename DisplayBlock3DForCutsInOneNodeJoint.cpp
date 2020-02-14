@@ -108,7 +108,9 @@ bool DisplayBlock3DForCutsInOneNodeJoint::execute() {
 		_updateScene();
 	return true;
 }
-
+bool DisplayBlock3DForCutsInOneNodeJoint::check() const{
+    return 1;
+}
 
 bool collectPoints(const ECCutD::Block3DForCutManager* blkMgr
                   , vtkPoints* pts
@@ -406,8 +408,8 @@ vtkTexture* DisplayBlock3DForCutsInOneNodeJoint::_getTexture()
 {
     vtkSmartPointer<vtkImageAppend> append = vtkSmartPointer<vtkImageAppend>::New();
 
-    String path = "D:/meshes/textures/texture_";
-    int control[] = {2,4,2,2};
+    String path = "D:/code/testTexture/texture/texture";
+    int control[] = {0,1,0,0};
     for(int i=0;i<_mapMaterialAndPolydata.size();i++){
         vtkSmartPointer<vtkJPEGReader> reader = vtkSmartPointer<vtkJPEGReader>::New();
         String file = path + std::to_string(control[i]) + ".jpg";
@@ -436,13 +438,14 @@ void DisplayBlock3DForCutsInOneNodeJoint::_processPointData(vtkSmartPointer<vtkP
     map->SetInputData(polydata);
     map->Update();
     polydata->GetPointData()->SetTCoords(map->GetPolyDataOutput()->GetPointData()->GetTCoords());
-    int num = polydata->GetPointData()->GetTCoords()->GetNumberOfTuples();
+    vtkIdType num = polydata->GetPointData()->GetTCoords()->GetNumberOfTuples();
     double tcs[2];
     double total = _mapMaterialAndPolydata.size();
-    for (int i = 0; i < num; i++)
+    for (vtkIdType i = 0; i < num; i++)
     {
         polydata->GetPointData()->GetTCoords()->GetTuple(i, tcs);
-        tcs[0] = tcs[0]/total + (double)n/total;
+        tcs[0] = tcs[0]/total + n/total;
+
         polydata->GetPointData()->GetTCoords()->SetTuple(i, tcs);
     }
 
